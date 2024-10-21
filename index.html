@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeatFlow - Music Player</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <header>
+        <h1>BeatFlow</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#playlist">Playlist</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="player">
+            <h2>Now Playing</h2>
+            <audio controls id="audio-player">
+                <source id="audio-source" src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <div id="controls">
+                <button onclick="playAudio()">Play</button>
+                <button onclick="pauseAudio()">Pause</button>
+                <button onclick="stopAudio()">Stop</button>
+            </div>
+        </section>
+
+        <section id="playlist">
+            <h2>Your Playlist</h2>
+            <ul id="song-list">
+                <li onclick="loadSong('song1.mp3')">Song 1</li>
+                <li onclick="loadSong('song2.mp3')">Song 2</li>
+                <li onclick="loadSong('song3.mp3')">Song 3</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 BeatFlow. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script> <!-- Link to your JavaScript file -->
+    <script>
+        // Check localStorage for the current song
+        window.onload = function() {
+            const currentSong = localStorage.getItem('currentSong');
+            if (currentSong) {
+                document.getElementById('audio-source').src = currentSong;
+                document.getElementById('audio-player').load();
+            }
+        };
+    </script>
+</body>
+</html>
