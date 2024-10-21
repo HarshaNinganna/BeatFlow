@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeatFlow - Admin</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="container">
+        <header class="text-center my-4">
+            <h1>BeatFlow Admin</h1>
+        </header>
+
+        <main>
+            <section id="add-song" class="mb-4">
+                <h2>Add a New Song</h2>
+                <div class="form-group">
+                    <input type="text" id="song-title" class="form-control" placeholder="Song Title" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="song-url" class="form-control" placeholder="Audio File URL" required>
+                </div>
+                <button id="add-song-btn" class="btn btn-primary">Add Song</button>
+            </section>
+
+            <section id="song-list">
+                <h2>Current Songs</h2>
+                <ul id="current-songs" class="list-group">
+                    <!-- Dynamically populated list of songs -->
+                </ul>
+            </section>
+        </main>
+
+        <footer class="text-center mt-4">
+            <p>&copy; 2024 BeatFlow Admin. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="admin.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>
