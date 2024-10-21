@@ -1,0 +1,114 @@
+/* styles.css */
+
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+}
+
+/* Header Styles */
+header {
+    background-color: #1e1e1e;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff4081; /* Highlight color */
+}
+
+/* Main Styles */
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Player Section */
+#player {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+#player h2 {
+    font-size: 2rem;
+}
+
+/* Audio Controls */
+#controls button {
+    background-color: #ff4081; /* Button color */
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#controls button:hover {
+    background-color: #ff79b0; /* Button hover color */
+}
+
+/* Playlist Section */
+#playlist {
+    margin-top: 30px;
+}
+
+#playlist h2 {
+    font-size: 2rem;
+}
+
+#song-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#song-list li {
+    padding: 10px;
+    background-color: #2a2a2a;
+    border-radius: 5px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#song-list li:hover {
+    background-color: #ff4081; /* Highlight on hover */
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #1e1e1e;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
