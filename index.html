@@ -3,59 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeatFlow - Music Player</title>
-    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+    <title>BeatFlow - User Interface</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <h1>BeatFlow</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#playlist">Playlist</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-        </nav>
+        <div class="logo">
+            <h1>BeatFlow</h1>
+        </div>
+        <div class="menu">
+            <button id="allSongsBtn">All Songs</button>
+            <button id="onlineSongsBtn">Online Songs</button>
+            <button id="downloadedSongsBtn">Downloaded Songs</button>
+            <button id="playlistBtn">Playlist</button>
+            <button id="favoritesBtn">Favorites</button>
+        </div>
     </header>
 
-    <main>
-        <section id="player">
-            <h2>Now Playing</h2>
-            <audio controls id="audio-player">
-                <source id="audio-source" src="" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-            <div id="controls">
-                <button onclick="playAudio()">Play</button>
-                <button onclick="pauseAudio()">Pause</button>
-                <button onclick="stopAudio()">Stop</button>
-            </div>
-        </section>
+    <!-- Song List Section -->
+    <section id="song-list">
+        <h2>All Songs</h2>
+        <div id="songGrid">
+            <!-- Songs will be dynamically loaded here -->
+        </div>
+    </section>
 
-        <section id="playlist">
-            <h2>Your Playlist</h2>
-            <ul id="song-list">
-                <li onclick="loadSong('song1.mp3')">Song 1</li>
-                <li onclick="loadSong('song2.mp3')">Song 2</li>
-                <li onclick="loadSong('song3.mp3')">Song 3</li>
-            </ul>
-        </section>
-    </main>
+    <!-- Song Detail Modal -->
+    <div id="songModal" class="modal hidden">
+        <div class="modal-content">
+            <span id="closeModal">&times;</span>
+            <img id="modalPoster" src="" alt="Music Poster">
+            <h3 id="modalTitle">Song Title</h3>
+            <p id="modalDirector">Director: </p>
+            <p id="modalYear">Year: </p>
+            <p id="modalBanner">Production Banner: </p>
+        </div>
+    </div>
 
-    <footer>
-        <p>&copy; 2024 BeatFlow. All rights reserved.</p>
-    </footer>
+    <!-- Music Player -->
+    <section id="musicPlayer">
+        <div class="player-controls">
+            <button id="prevBtn">Prev</button>
+            <button id="playPauseBtn">Play</button>
+            <button id="nextBtn">Next</button>
+        </div>
+        <div class="progress-bar">
+            <input type="range" id="progressBar" value="0" max="100">
+        </div>
+        <div class="player-buttons">
+            <button id="addToFavoritesBtn">Add to Favorites</button>
+            <button id="addToPlaylistBtn">Add to Playlist</button>
+            <button id="downloadBtn">Download</button>
+        </div>
+    </section>
 
-    <script src="script.js"></script> <!-- Link to your JavaScript file -->
-    <script>
-        // Check localStorage for the current song
-        window.onload = function() {
-            const currentSong = localStorage.getItem('currentSong');
-            if (currentSong) {
-                document.getElementById('audio-source').src = currentSong;
-                document.getElementById('audio-player').load();
-            }
-        };
-    </script>
+    <script src="user_script.js"></script>
 </body>
 </html>
