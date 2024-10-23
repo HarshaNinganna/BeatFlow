@@ -3,61 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeatFlow - User Interface</title>
-    <link rel="stylesheet" href="style.css">
+    <title>BeatFlow - Music Player</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <h1>BeatFlow</h1>
-        </div>
-        <div class="menu">
-            <button id="allSongsBtn">All Songs</button>
-            <button id="onlineSongsBtn">Online Songs</button>
-            <button id="downloadedSongsBtn">Downloaded Songs</button>
-            <button id="playlistBtn">Playlist</button>
-            <button id="favoritesBtn">Favorites</button>
-        </div>
+    <header class="bg-dark text-white text-center p-4">
+        <h1>BeatFlow Music Player</h1>
     </header>
 
-    <!-- Song List Section -->
-    <section id="song-list">
-        <h2>All Songs</h2>
-        <div id="songGrid">
-            <!-- Songs will be dynamically loaded here -->
-        </div>
-    </section>
+    <div class="container">
+        <!-- Add Song Form -->
+        <section>
+            <h2>Add New Song</h2>
+            <form id="songForm">
+                <div class="form-group">
+                    <label for="audioLink">Audio File URL:</label>
+                    <input type="text" class="form-control" id="audioLink" placeholder="Enter direct link to audio file (e.g., MP3)" required>
+                </div>
+                <button type="submit" class="btn btn-success">Add Song</button>
+            </form>
+        </section>
 
-    <!-- Song Detail Modal -->
-    <div id="songModal" class="modal hidden">
-        <div class="modal-content">
-            <span id="closeModal">&times;</span>
-            <img id="modalPoster" src="" alt="Music Poster">
-            <h3 id="modalTitle">Song Title</h3>
-            <p id="modalDirector">Director: </p>
-            <p id="modalYear">Year: </p>
-            <p id="modalBanner">Production Banner: </p>
-        </div>
+        <!-- List of Songs -->
+        <section class="mt-4" id="songListSection">
+            <h2>Added Songs</h2>
+            <table class="table table-striped" id="songList">
+                <thead>
+                    <tr>
+                        <th>Sl. No</th>
+                        <th>Song</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Song entries will go here -->
+                </tbody>
+            </table>
+        </section>
     </div>
 
-    <!-- Music Player -->
-    <section id="musicPlayer">
-        <div class="player-controls">
-            <button id="prevBtn">Prev</button>
-            <button id="playPauseBtn">Play</button>
-            <button id="nextBtn">Next</button>
-        </div>
-        <div class="progress-bar">
-            <input type="range" id="progressBar" value="0" max="100">
-        </div>
-        <div class="player-buttons">
-            <button id="addToFavoritesBtn">Add to Favorites</button>
-            <button id="addToPlaylistBtn">Add to Playlist</button>
-            <button id="downloadBtn">Download</button>
-        </div>
-    </section>
+    <footer class="bg-dark text-white text-center p-3">
+        <p>&copy; 2024 BeatFlow Music Player</p>
+    </footer>
 
-    <script src="user_script.js"></script>
+    <script>
+        const songForm = document.getElementById('songForm');
+        const songList = document.getElementById('songList').getElementsByTagName('tbody')[0];
+
+        songForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const audioLink = document.getElementById('audioLink').value;
+
+            const row = songList.insertRow();
+            const cell1 = row.insertCell(0);
+            const cell2 = row.insertCell(1);
+            const cell3 = row.insertCell(2);
+
+            cell1.textContent = songList.rows.length + 1; // Sl. No
+            cell2.innerHTML = `<audio controls>
+                                  <source src="${audioLink}" type="audio/mpeg">
+                                  Your browser does not support the audio tag.
+                               </audio>`;
+            cell3.innerHTML = `
+                <a href="${audioLink}" class="btn btn-warning" download>Download</a>
+            `;
+
+            // Clear input
+            document.getElementById('audioLink').value = '';
+        });
+    </script>
 </body>
 </html>
